@@ -1,51 +1,21 @@
-wait(1)
-local repo = 'https://raw.githubusercontent.com/wally-rblx/LinoriaLib/main/'
+local SolarisLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/sol"))()
 
-local Library = loadstring(game:HttpGet(repo .. 'Library.lua'))()
-local ThemeManager = loadstring(game:HttpGet(repo .. 'addons/ThemeManager.lua'))()
-local SaveManager = loadstring(game:HttpGet(repo .. 'addons/SaveManager.lua'))()
-local Window = Library:CreateWindow({
-
-    Title = 'BusLate X HUB',
-    Center = true, 
-    AutoShow = true,
-})
-local Tabs = {
-    -- Creates a new tab titled Main
-    Main = Window:AddTab('Main'), 
-    ['UI Settings'] = Window:AddTab('UI Settings'),
-   
-}
-local LeftGroupBox = Tabs.Main:AddLeftGroupbox('AutoFarm⚔️')
-LeftGroupBox:AddToggle('MyToggle', {
-    Text = 'AutoFarm Level',
-    Default = true, -- Default value (true / false)
-    Tooltip = 'FarmLevel', -- Information shown when you hover over the toggle
+--[[SolarisLib:New({
+  Name - Title of the UI <string>
+  FolderToSave - Name of the folder where the UI files will be stored <string>
+})]]
+local win = SolarisLib:New({
+  Name = "NIGGA HUB | BloxFoot",
+  FolderToSave = "SolarisLibStuff"
 })
 
-Weapon = {}
-for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-    if v:IsA"Tool" then
-        table.insert(Weapon,v.Name)
-    end
-    end
+--win:Tab(title <string>)
+local tab = win:Tab("Main")
 
-LeftGroupBox:AddDropdown('MyDropdown', {
-    Values = Weapon,
-    Default = 1, -- number index of the value / string
-    Multi = false, -- true / false, allows multiple choices to be selected
+--tab:Section(title <string>)
+local sec = tab:Section("AutoFarm")
 
-    Text = 'Weapon',
-    Tooltip = 'This is a tooltip', -- Information shown when you hover over the textbox
-})
-
-Options.MyDropdown:OnChanged(function(w)
-    _G.SelectWeapon = w
-end)
-
-Options.MyDropdown:SetValue('Weapon')
-
-Toggles.MyToggle:OnChanged(function(a)
+local toggle = sec:Toggle("Farm Lv", false,"Toggle", function(a)
     _G.Auto_Farm = a -- true / false
 
 function totarget(p)
@@ -107,24 +77,48 @@ function checklevel()
         QuestName = "DesertQuest"
         QuestNumber = 1
         CFrameQuest = CFrame.new(895.8423461914062, 6.438462734222412, 4391.177734375)
-        CFrameMon = CFrame.new(932.6149291992188, 6.450390338897705, 4483.6650390625)
-        CFramePuk = CFrame.new(831.3095092773438, 21.566604614257812, 4496.11474609375)
+        CFrameMon = CFrame.new(929.9849853515625, 6.450509548187256, 4486.75732421875)
+        CFramePuk = CFrame.new(857.6968994140625, 20.75884246826172, 4545.390625)
         elseif lv == 75 or lv <= 119 then
         Mon = "Desert Officer [Lv. 70]"
         Title = "Desert Officer"
         QuestName = "DesertQuest"
         QuestNumber = 2
         CFrameQuest = CFrame.new(895.8423461914062, 6.438462734222412, 4391.177734375)
-        CFrameMon = CFrame.new(1609.805419921875, 1.6109551191329956, 4375.03125)
-        CFramePuk = CFrame.new(1656.8251953125, 9.899896621704102, 4453.896484375)
+        CFrameMon = CFrame.new(1620.492919921875, 1.6109551191329956, 4379.02685546875)
+        CFramePuk = CFrame.new(1659.47119140625, 9.899896621704102, 4452.79638671875)
     elseif lv == 120 or lv <= 149 then
         Mon = "Chief Petty Officer [Lv. 120]"
         Title = "Chief Petty Officer"
         QuestName = "MarineQuest2"
         QuestNumber = 1
-        CFrameQuest = CFrame.new(-5038.0634765625, 28.65203285217285, 4324.37255859375)
-        CFrameMon = CFrame.new(-4737.5537109375, 20.65203285217285, 4533.75244140625)
-        CFramePuk = CFrame.new(-4779.74853515625, 74.91291046142578, 4481.4365234375)
+        CFrameQuest = CFrame.new(-5037.98046875, 28.65203285217285, 4324.41455078125)
+        CFrameMon = CFrame.new(-4959.61474609375, 20.65203285217285, 4035.065673828125)
+        CFramePuk = CFrame.new(-4907.70458984375, 81.09860229492188, 3872.9306640625)
+    elseif lv == 150 or lv <= 174 then
+        Mon = "Sky Bandit [Lv. 150]"
+        Title = "Sky Bandit"
+        QuestName = "SkyQuest"
+        QuestNumber = 1
+        CFrameQuest = CFrame.new(-4840.34912109375, 718.1495971679688, -2620.419189453125)
+        CFrameMon = CFrame.new(-5009.98291015625, 278.0670471191406, -2848.814697265625)
+        CFramePuk = CFrame.new(-4994.17919921875, 345.8211975097656, -2984.7265625)
+        elseif lv == 175 or lv <= 249 then
+        Mon = "Dark Master [Lv. 175]"
+        Title = "Dark Master"
+        QuestName = "SkyQuest"
+        QuestNumber = 2
+        CFrameQuest = CFrame.new(-4840.34912109375, 718.1495971679688, -2620.419189453125)
+        CFrameMon = CFrame.new(-5250.49755859375, 388.6519470214844, -2264.858642578125)
+        CFramePuk = CFrame.new(-5154.63671875, 438.51824951171875, -2264.802490234375)
+    elseif lv == 250 or lv <= 300 then
+        Mon = "Toga Warrior [Lv. 250]"
+        Title = "Toga Warrior"
+        QuestName = "ColosseumQuest"
+        QuestNumber = 1
+        CFrameQuest = CFrame.new(-1579.31005859375, 7.38933801651001, -2985.140869140625)
+        CFrameMon = CFrame.new(-1895.8349609375, 7.289072036743164, -2780.108154296875)
+        CFramePuk = CFrame.new(-1882.9078369140625, 7.442545413970947, -2884.8955078125)
     end
 end
 
@@ -147,8 +141,8 @@ elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == tr
     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
         for i,v2 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
         if v.Name == Mon and v2.Name == Mon then
-            totarget(v.HumanoidRootPart.CFrame * CFrame.new(0,0,15))
-            v.HumanoidRootPart.Size = Vector3.new(60,2.5,60)
+            totarget(v.HumanoidRootPart.CFrame * CFrame.new(0,0,20))
+            v.HumanoidRootPart.Size = Vector3.new(60,2,60)
             v.HumanoidRootPart.CFrame = CFrameMon
             game:GetService'VirtualUser':CaptureController()
             game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
@@ -210,15 +204,9 @@ spawn(function()
     end
 end)
 end)
-Toggles.MyToggle:SetValue(false)
 
-LeftGroupBox:AddToggle('MyToggle', {
-    Text = 'FastAttack',
-    Default = false, -- Default value (true / false)
-    Tooltip = 'This is a tooltip', -- Information shown when you hover over the toggle
-})
-Toggles.MyToggle:OnChanged(function(f)
-for i=1,2 do
+local toggle = sec:Toggle("FastActtck", false,"Toggle", function(f)
+for i=1,4 do
 print("รอบที่ "..i)
 _G.FastAttack = f
 _G.FastAttackType = "Safety"
@@ -316,7 +304,7 @@ coroutine.wrap(function()
                 if _G.FastAttackType == "Fast" then
                     if tick() - cooldownfastattack < task.wait() then task.wait() cooldownfastattack = tick() end
                 elseif _G.FastAttackType == "Normal" then
-                    if tick() - cooldownfastattack > 1.5 then wait(1) cooldownfastattack = tick() end
+                    if tick() - cooldownfastattack > 1.5 then wait(2) cooldownfastattack = tick() end
                 elseif _G.FastAttackType == "Safety" then
                     if tick() - cooldownfastattack > .3 then wait(.5) cooldownfastattack = tick() end
                 end
@@ -334,60 +322,43 @@ end)()
 end
 end)
 
+local Weaponlist = {}
+local Weapon = nil
 
-LeftGroupBox:AddToggle('MyToggle', {
-    Text = 'Open Buso Haki',
-    Default = false, -- Default value (true / false)
-    Tooltip = 'This is a tooltip', -- Information shown when you hover over the toggle
-})
+for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+    table.insert(Weaponlist,v.Name)
+end
 
-Toggles.MyToggle:OnChanged(function(h)
-_G.args = h
+local dropdown = sec:Dropdown("Select Weapon", Weaponlist,"","Dropdown", function(t)
+  Weapon = t
+end)
 
-_G.args = {
+local toggle = sec:Toggle("Equip Weapon", false,"Toggle", function(t)
+EquipWeapon = t
+end)
+
+spawn(function()
+    while wait() do
+        if EquipWeapon then
+    pcall(function()
+    game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
+    end)
+    end
+end
+end)
+
+
+sec:Button("Open Busu Haki", function()
+  _G.args = {
     [1] = "Buso"
 }
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(_G.args))
-
-end)
-LeftGroupBox:AddDivider()
-Toggles.MyToggle:SetValue(false)
-local LeftGroupBox = Tabs.Main:AddLeftGroupbox('Buy Haki')
-local MyButton = LeftGroupBox:AddButton('Buy Geppo(10000)', function()
-local args = {
-    [1] = "BuyHaki",
-    [2] = "Geppo"
-}
-
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-local MyButton = LeftGroupBox:AddButton('Buy Buso(25000)', function()
-local args = {
-    [1] = "BuyHaki",
-    [2] = "Buso"
-}
-
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-end)
-local MyButton = LeftGroupBox:AddButton('Buy Soru(100000)', function()
-local args = {
-    [1] = "BuyHaki",
-    [2] = "Soru"
-}
-
-game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 end)
 
-local LeftGroupBox = Tabs.Main:AddLeftGroupbox('Stats')
-LeftGroupBox:AddToggle('MyToggle', {
-    Text = 'Melle',
-    Default = false, -- Default value (true / false)
-    Tooltip = 'Melee', -- Information shown when you hover over the toggle
-})
-
-
-Toggles.MyToggle:OnChanged(function(stats)
-    _G.args = stats
+local tab = win:Tab("AutoStats")
+local sec = tab:Section("Stats")
+local toggle = sec:Toggle("Melee", false,"Toggle", function(t)
+    _G.args = t
    while _G.args do 
        wait(0)
     _G.args = {
@@ -398,20 +369,11 @@ Toggles.MyToggle:OnChanged(function(stats)
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(_G.args)) 
 end
 end)
-Toggles.MyToggle:SetValue(false)
-
-LeftGroupBox:AddToggle('MyToggle', {
-    Text = 'Defense',
-    Default = false, -- Default value (true / false)
-    Tooltip = 'Defense', -- Information shown when you hover over the toggle
-})
-
-
-Toggles.MyToggle:OnChanged(function(stats)
-_G.args = stats
+local toggle = sec:Toggle("Defense", false,"Toggle", function(t)
+    _G.args = t
     while _G.args do
         wait(0)
-_G.args = {
+    _G.args = {
     [1] = "AddPoint",
     [2] = "Defense",
     [3] = 1
@@ -419,16 +381,8 @@ _G.args = {
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(_G.args))
 end
 end)
-Toggles.MyToggle:SetValue(false)
-
-LeftGroupBox:AddToggle('MyToggle', {
-    Text = 'Sword',
-    Default = false, -- Default value (true / false)
-    Tooltip = 'Sword', -- Information shown when you hover over the toggle
-})
-
-Toggles.MyToggle:OnChanged(function(stats)
-        _G.args = stats
+local toggle = sec:Toggle("Sword", false,"Toggle", function(t)
+    _G.args = t
    while _G.args do
        wait(0)
    _G.args = {
@@ -439,16 +393,20 @@ Toggles.MyToggle:OnChanged(function(stats)
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(_G.args))
 end
 end)
-Toggles.MyToggle:SetValue(false)
-
-LeftGroupBox:AddToggle('MyToggle', {
-    Text = 'Fruit',
-    Default = false, -- Default value (true / false)
-    Tooltip = 'Fruit', -- Information shown when you hover over the toggle
-})
-
-Toggles.MyToggle:OnChanged(function(stats)
-    _G.args = stats
+local toggle = sec:Toggle("Gun", false,"Toggle", function(t)
+    _G.args = t
+while _G.args do 
+        wait(0)
+    _G.args = {
+    [1] = "AddPoint",
+    [2] = "Gun",
+    [3] = 1
+}
+game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(_G.args))
+end
+end)
+local toggle = sec:Toggle("Fruit", false,"Toggle", function(t)
+    _G.args = t
     while _G.args do 
         wait(0)
     _G.args = {
@@ -460,10 +418,12 @@ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(_G.args)
 end
 end)
 
-Toggles.MyToggle:SetValue(false)
-
-local MyButton = LeftGroupBox:AddButton('Redeem All EXP Code', function()
-local args = {
+--Tab 3
+local tab = win:Tab("Mic")
+local sec = tab:Section("Code")
+sec:Button("Redeem All EXP Code", function()
+  SolarisLib:Notification("NIGGA", "REDEEM ALL EXP CODE SUCCEED!")
+  local args = {
     [1] = "15B_BESTBROTHERS"
 }
 
@@ -572,35 +532,10 @@ local args = {
 game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(unpack(args))
 end)
 
-local MenuGroup = Tabs['UI Settings']:AddLeftGroupbox('Menu')
-
--- I set NoUI so it does not show up in the keybinds menu
-MenuGroup:AddButton('Unload', function() Library:Unload() end)
-MenuGroup:AddLabel('Menu bind'):AddKeyPicker('MenuKeybind', { Default = 'RightControl', NoUI = true, Text = 'Menu keybind' }) 
-
-Library.ToggleKeybind = Options.MenuKeybind
-ThemeManager:SetLibrary(Library)
-SaveManager:SetLibrary(Library)
-
--- Ignore keys that are used by ThemeManager. 
--- (we dont want configs to save themes, do we?)
-SaveManager:IgnoreThemeSettings() 
-
--- Adds our MenuKeybind to the ignore list 
--- (do you want each config to have a different menu key? probably not.)
-SaveManager:SetIgnoreIndexes({ 'MenuKeybind' }) 
-
--- use case for doing it this way: 
--- a script hub could have themes in a global folder
--- and game configs in a separate folder per game
-ThemeManager:SetFolder('MyScriptHub')
-SaveManager:SetFolder('MyScriptHub/specific-game')
-
--- Builds our config menu on the right side of our tab
-SaveManager:BuildConfigSection(Tabs['UI Settings']) 
-
--- Builds our theme menu (with plenty of built in themes) on the left side
--- NOTE: you can also call ThemeManager:ApplyToGroupbox to add it to a specific groupbox
-ThemeManager:ApplyToTab(Tabs['UI Settings'])
-LeftGroupBox:AddDivider()
-Options.MyDropdown:SetValue('This')
+local sec = tab:Section("More Function")
+sec:Button("Rejoin", function()
+  SolarisLib:Notification("NIGGA", "Rejoin Succeed!")
+  local ts = game:GetService("TeleportService")
+local p = game:GetService("Players").LocalPlayer
+ts:Teleport(game.PlaceId, p)
+end)
